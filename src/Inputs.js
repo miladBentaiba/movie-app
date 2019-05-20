@@ -16,7 +16,7 @@ export default class Inputs extends React.Component {
   render() { 
     return (  
       <div className="container">
-        <i onClick={this.toggle} class={this.state.up?'fas fa-sort-down':'fas fa-sort-up'}></i>
+        <i onClick={this.toggle} className={this.state.up?'fas fa-sort-down':'fas fa-sort-up'}></i>
         <Collapse isOpen={this.state.collapse}>
           <Input type="email" name="title" id="title" placeholder="Search by title" />
           <Input type="number" name="year" id="year" placeholder="Search by year" />
