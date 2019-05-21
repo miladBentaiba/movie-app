@@ -27,9 +27,6 @@
     transform: rotate(360deg);
   }
 }
-.toggler-parent{
-  float:right;
-}
 .all-form{
   margin-top: 1em;
 }

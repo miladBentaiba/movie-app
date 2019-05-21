@@ -7,7 +7,7 @@ class MovieCard extends Component {
   }
   render() { 
     return (  
-    <div className="movie-card card">
+    <div className="movie-card card all-form">
       <img className="card-img-top" alt="" 
         src="http://react-movie-cards.drminnaar.me/images/Final_Fantasy_Spirits_Within.jpg"/>
       <div className="card-body">
