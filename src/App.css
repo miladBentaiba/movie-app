@@ -4,7 +4,6 @@ body {
   color: #212529;
   text-align: left;
   background-color: whitesmoke;
-  font-family: "Open Sans",Helvetica,Arial,sans-serif;
   font-family: sans-serif;
 	line-height: 1.15;
 }
@@ -21,7 +20,7 @@ body {
   margin-bottom: 10px;
   margin-top:1em;
   width: 350px;
-  height: 483px;
+  height: 484px;
 }
 .card-img-top {
 	width: 100%;
@@ -77,7 +76,8 @@ body {
 }
 p {
 	margin-top: 0px;
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
+  font-size:12px;
 }
 .text-justify {
 	text-align: justify;
@@ -102,8 +102,8 @@ p {
   margin-top:1em;
 	width: 350px;
   background-color:#f7f7f7;
-  line-height: 483px;
-  height:483px;
+  line-height: 484px;
+  height:484px;
   text-align:center;
 }
 .plus i{
@@ -113,7 +113,4 @@ p {
   font-size: 50px;
   color: gray;
   font-weight: none;
-}
-p{
-  font-size:12px;
 }

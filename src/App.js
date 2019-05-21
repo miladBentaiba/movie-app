@@ -3,8 +3,8 @@ import './App.css';
 import Inputs from './Inputs'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import MovieCard from './MovieCard'
-import movies from './dataMovies'
+import List from './List'
+import AddVideo from './AddVideo'
 
 library.add(fab)
 
@@ -14,10 +14,8 @@ function App() {
       <div className="container">
         <Inputs/>
         <div className="parent-movies">
-          {movies.map((el, index)=><MovieCard  item={el} key={index} />)}
-          <div className="plus" style={{height:'500px'}}>
-            <i className="fas fa-plus"></i>
-          </div>
+          <List/>
+          <AddVideo/>
         </div>
       </div>
     </div>
