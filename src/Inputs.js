@@ -3,8 +3,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Collapse, FormGroup, Input, Label, Form} from 'reactstrap';
 import StarRatingComponent from 'react-star-rating-component';
 
-
-
 export default class Inputs extends React.Component {
   constructor(props) {
     super(props);
