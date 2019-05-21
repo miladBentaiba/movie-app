@@ -14,9 +14,11 @@ export default class Inputs extends React.Component {
   }
 
   render() { 
+    let p = (this.state.up)? <p >click to open filter input</p> : <p></p>
     return (  
       <div className="container all-form">
         <div onClick={this.toggle} className='toggler-parent'>
+         {p}
           <i  className={'float-right ' +(this.state.up?'fas fa-sort-down':'fas fa-sort-up')}></i>
         </div>
         <Collapse isOpen={this.state.collapse}>
