@@ -13,8 +13,11 @@ function App() {
     <div className="App">
       <div className="container">
         <Inputs/>
-        <div className="row parent-movies">
-          {movies.map((el, index)=><MovieCard className="col-3" item={el} key={index} />)}
+        <div className="parent-movies">
+          {movies.map((el, index)=><MovieCard  item={el} key={index} />)}
+          <div className="plus" style={{height:'500px'}}>
+            <i className="fas fa-plus"></i>
+          </div>
         </div>
       </div>
     </div>

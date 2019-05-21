@@ -19,12 +19,12 @@ export default class Inputs extends React.Component {
   }
   render() { 
     const { ratingLow, ratingHigh } = this.state;
-    let search = (this.state.up? <Input type="text" className="col-11" placeholder="Search for movies" />:<p></p>)
+    let search = (this.state.up? <Input type="text" placeholder="Search for movies" />:<p></p>)
     return (  
-      <div className="container all-form">
-        <div onClick={this.toggle} className='toggler-parent row'>
+      <div className="inputs">
+        <div onClick={this.toggle} className='toggler-parent' style={{display:'flex', justifyContent: 'space-between'}}>
           {search}
-          <i  className={'float-right col-1 ' + (this.state.up?'fas fa-sort-down':'fas fa-sort-up')}></i>
+          <i  className={(this.state.up?'fas fa-sort-down':'fas fa-sort-up')} style={{margin:'10px'}}></i>
         </div>
         <Collapse isOpen={this.state.collapse}>
           <Form>

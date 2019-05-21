@@ -8,8 +8,8 @@ class MovieCard extends Component {
   render() {
     const { title, image, description, year, ranking } = this.props.item
     return (
-      <div className="movie-card card all-form">
-          <img className="card-img-top img-movie" alt="" src={image} />
+      <div className="movie-card">
+        <img className="card-img-top img-movie" alt="" src={image} />
         <div className="card-body">
           <h4 className="card-title">{title}</h4>
           <h6 className="card-subtitle mb-2 text-muted">{year}</h6>
