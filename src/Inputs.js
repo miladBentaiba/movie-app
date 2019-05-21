@@ -30,7 +30,7 @@ export default class Inputs extends React.Component {
           <Form>
             <FormGroup>
               <Label for="exampleCheckbox float-left" >Title</Label>
-              <Input type="text" name="title" id="title" placeholder="Search by title" />
+              <Input type="text" name="title" id="title" placeholder="Search by title"/>
             </FormGroup>
             <FormGroup>
               <Label for="exampleCheckbox float-left">Year</Label>
