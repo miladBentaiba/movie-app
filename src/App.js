@@ -3,10 +3,9 @@ import './App.css';
 import Inputs from './Inputs'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
 import MovieCard from './MovieCard';
 
-library.add(fab, faCheckSquare, faCoffee)
+library.add(fab)
 
 function App() {
   return (
