@@ -16,7 +16,6 @@ export default class Inputs extends React.Component {
     this.props.getstatefromsearch(this.state.title, this.state.year, this.state.ratingLow, this.state.ratingHigh)
   }
   onStarClick(nextValue, prevValue, name) {
-    console.log(name)
     if (name === "rate1") this.setState({ ratingLow: nextValue }, ()=>this.sendNewMovie());
     else                  this.setState({ ratingHigh: nextValue }, ()=>this.sendNewMovie());
   }
