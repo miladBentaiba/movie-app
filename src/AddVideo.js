@@ -12,6 +12,12 @@ export default class AddVideo extends Component {
   onStarClick(nextValue, prevValue, name) { this.setState({ rating: nextValue }); }
   toggle = () => { this.setState(prevState => ({ modal: !prevState.modal })); }
 
+  updateForm=(e)=>{
+    e.target.name==='title'? this.setState({title:e.target.value}): 
+    e.target.name==='year'? this.setState({year:e.target.value}):
+      this.setState({description:e.target.value})
+  }
+
   render() {
     const { rating } = this.state;
     return (
@@ -25,15 +31,18 @@ export default class AddVideo extends Component {
             <Form>
               <FormGroup>
                 <Label for="title">Title</Label>
-                <Input type="text" name="title" id="title" value={this.state.title} placeholder="movie title" />
+                <Input type="text" name="title" id="title" value={this.state.title} 
+                  onChange={this.updateForm} placeholder="movie title" />
               </FormGroup>
               <FormGroup>
                 <Label for="year">Year</Label>
-                <Input type="number" name="year" id="year" value={this.state.year} placeholder="movie year" />
+                <Input type="number" name="year" id="year" value={this.state.year} 
+                  onChange={this.updateForm} placeholder="movie year" />
               </FormGroup>
               <FormGroup>
                 <Label for="exampleText">Description</Label>
-                <Input type="textarea" name="description" id="description" value={this.state.description} />
+                <Input type="textarea" name="description" id="description" 
+                  onChange={this.updateForm}  value={this.state.description} />
               </FormGroup>
               <FormGroup>
                 <Label for="image">File</Label>
