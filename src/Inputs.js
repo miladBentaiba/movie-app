@@ -8,20 +8,19 @@ export default class Inputs extends React.Component {
     super(props);
     this.state = { collapse: false, up: true, ratingLow: 0, ratingHigh: 10, title: "", year: 2000 };
   }
-  filter =(e) =>{
-    e.target.name === 'title' ? this.setState({ title: e.target.value }, ()=>this.sendNewMovie()) :
-                                this.setState({ year: e.target.value }, ()=> this.sendNewMovie())
+  filter = (e) => {
+    e.target.name === 'title' ? this.setState({ title: e.target.value }, () => this.sendNewMovie()) :
+      this.setState({ year: e.target.value }, () => this.sendNewMovie())
   }
-  sendNewMovie=() =>{
+  sendNewMovie = () => {
     this.props.getstatefromsearch(this.state.title, this.state.year, this.state.ratingLow, this.state.ratingHigh)
   }
   onStarClick(nextValue, prevValue, name) {
-    if (name === "rate1") this.setState({ ratingLow: nextValue }, ()=>this.sendNewMovie());
-    else                  this.setState({ ratingHigh: nextValue }, ()=>this.sendNewMovie());
+    if (name === "rate1") this.setState({ ratingLow: nextValue }, () => this.sendNewMovie());
+    else this.setState({ ratingHigh: nextValue }, () => this.sendNewMovie());
   }
-  toggle=()=> {
-    this.setState(state => ({ collapse: !state.collapse, up: !state.up }), ()=>this.sendNewMovie());
-  }
+  toggle = () => { this.setState(state => ({ collapse: !state.collapse, up: !state.up }), () => this.sendNewMovie()); }
+
   render() {
     const { ratingLow, ratingHigh } = this.state;
     let search = (this.state.up ? <Input type="text" placeholder="Search for movies" /> : <p></p>)
@@ -53,7 +52,6 @@ export default class Inputs extends React.Component {
             </FormGroup>
           </Form>
         </Collapse>
-      </div>
-    );
+      </div>);
   }
 }

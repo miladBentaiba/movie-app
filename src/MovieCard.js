@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
 
-class MovieCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
-  }
+export default class MovieCard extends Component {
   render() {
     const { title, image, description, year, ranking } = this.props.item
     return (
@@ -22,5 +18,3 @@ class MovieCard extends Component {
     );
   }
 }
-
-export default MovieCard;
