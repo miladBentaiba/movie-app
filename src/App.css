@@ -112,5 +112,12 @@ p {
   vertical-align: middle;
   font-size: 50px;
   color: gray;
-  font-weight: none;
+	font-weight: none;
+}
+.i{
+	margin: 10px;
+}
+.toggler-parent{
+	display:flex;
+	justify-content: space-between
 }

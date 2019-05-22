@@ -1,6 +1,6 @@
 const movies = [
   {
-    title: 'The Shawshank Redemption',
+    title: `The Shawshank Redemption ${'\n'} `,
     year: 1994,
     description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
     image: 'https://d1lfury6i2wx5t.cloudfront.net/images/c326baa0c297e8e5f407ecc5221545b4.jpeg',

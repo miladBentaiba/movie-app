@@ -6,13 +6,21 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import List from './List'
 import AddVideo from './AddVideo'
 
-library.add(fab)
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { title:'', year:2000, lowRate:0, highRate:10 }
+    library.add(fab)
+  }
 
-function App() {
-  return (
+  getstatefromsearch=(title, year, lowRate, highRate)=>{
+    this.setState({ title:title, year:year, lowRate:lowRate, highRate:highRate })
+  }
+  render(){
+    return (
     <div className="App">
       <div className="container">
-        <Inputs/>
+        <Inputs getstatefromsearch={this.getstatefromsearch}/>
         <div className="parent-movies">
           <List/>
           <AddVideo/>
@@ -20,6 +28,5 @@ function App() {
       </div>
     </div>
   );
+  }
 }
-
-export default App;
