@@ -6,11 +6,16 @@ import StarRatingComponent from 'react-star-rating-component';
 export default class AddVideo extends Component {
   constructor(props) {
     super(props);
-    this.state = { modal: false, title: '', year: 2000, description: '', ranking: 0, rating: 1 };
+    this.state = { modal: false, title: '', year: 2000, description: '', rating: 1, image:'' };
   }
 
   onStarClick(nextValue, prevValue, name) { this.setState({ rating: nextValue }); }
-  toggle = () => { this.setState(prevState => ({ modal: !prevState.modal })); }
+  toggle = () => { 
+    this.setState(prevState => ({ modal: !prevState.modal }), 
+      ()=>this.props.getnewmovie(
+        this.state.title, this.state.year, this.state.rating, this.state.description, this.state.image
+    )); 
+  }
 
   updateForm=(e)=>{
     e.target.name==='title'? this.setState({title:e.target.value}): 
@@ -44,11 +49,19 @@ export default class AddVideo extends Component {
                 <Input type="textarea" name="description" id="description" 
                   onChange={this.updateForm}  value={this.state.description} />
               </FormGroup>
-              <FormGroup>
+              {/* <FormGroup>
                 <Label for="image">File</Label>
                 <Input type="file" name="image" id="image" value={this.state.image} />
                 <FormText color="muted">
                   Please insert the movie's image
+                </FormText>
+              </FormGroup> */}
+              <FormGroup>
+                <Label for="exampleFile">File</Label>
+                <Input type="file" name="file" id="exampleFile" />
+                <FormText color="muted">
+                  This is some placeholder block-level help text for the above input.
+                  It's a bit lighter and easily wraps to a new line.
                 </FormText>
               </FormGroup>
               <FormGroup>
@@ -56,7 +69,7 @@ export default class AddVideo extends Component {
                 <StarRatingComponent name="rate1" starCount={10} value={rating} onStarClick={this.onStarClick.bind(this)} />
               </FormGroup>
               <ModalFooter>
-                <Button type="submit" color="primary" onClick={this.toggle}>Save</Button>{' '}
+                <Button color="primary" onClick={this.toggle}>Save</Button>{' '}
                 <Button color="secondary" onClick={this.toggle}>Cancel</Button>
               </ModalFooter>
             </Form>
