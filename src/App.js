@@ -18,7 +18,7 @@ export default class App extends React.Component {
   }
   filter = (title, year, lowRate, highRate) => this.state.movies
     .filter((el) => el.title.includes(title))
-    .filter((el) => parseInt(el.year) === parseInt(year))
+    .filter((el) => {if(year == null) return{}; else return parseInt(el.year) === parseInt(year)})
     .filter((el) => (el.ranking >= lowRate))
     .filter((el) => (el.ranking <= highRate))
 

@@ -6,7 +6,7 @@ import StarRatingComponent from 'react-star-rating-component';
 export default class Inputs extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { collapse: false, up: true, ratingLow: 0, ratingHigh: 10, title: "", year: 2000 };
+    this.state = { collapse: false, up: true, ratingLow: 0, ratingHigh: 10, title: "", year: null };
   }
   filter = (e) => {
     e.target.name === 'title' ? this.setState({ title: e.target.value }, () => this.sendNewMovie()) :
