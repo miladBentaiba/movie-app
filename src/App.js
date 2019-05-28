@@ -17,11 +17,13 @@ export default class App extends React.Component {
     this.setState({ filtredMovies: this.filter(title, year, lowRate, highRate) })
   }
   getnewmovie = (title, year, ranking, description, image) => {
-    this.setState({movies: [...this.state.movies, {title, year, image, ranking, description } ]}, console.log(this.state))
+    let movies = this.state.movies
+    movies.push({ title, year, image, ranking, description })
+    this.setState({ movies})
   }
   filter = (title, year, lowRate, highRate) => this.state.movies
     .filter((el) => el.title.includes(title))
-    .filter((el) => {if(year == null) return{}; else return parseInt(el.year) === parseInt(year)})
+    .filter((el) => { if (year == null) return {}; else return parseInt(el.year) === parseInt(year) })
     .filter((el) => (el.ranking >= lowRate))
     .filter((el) => (el.ranking <= highRate))
 
@@ -32,7 +34,7 @@ export default class App extends React.Component {
           <Inputs getstatefromsearch={this.getstatefromsearch} />
           <div className="parent-movies">
             {this.state.filtredMovies.map((el, index) => <MovieCard item={el} key={index} />)}
-            <AddVideo getnewmovie={this.getnewmovie}/>
+            <AddVideo getnewmovie={this.getnewmovie} />
           </div>
         </div>
       </div>
