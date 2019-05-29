@@ -14,24 +14,16 @@ export default class App extends React.Component {
     library.add(fab)
   }
   getstatefromsearch = (title, year, lowRate, highRate) => {
-    this.setState({ movies: this.filterMovies(title, year, lowRate, highRate) })
+     this.setState({movies: this.filterMovies(title, year, lowRate, highRate)})
   }
   getnewmovie = (title, year, ranking, description, image) => {
-    let movies = this.state.movies
-    movies.push({ title, year, image, ranking, description })
-    this.setState({ movies })
     dataMovies.push({ title, year, image, ranking, description })
+    this.setState({ movies: dataMovies })
   }
   filterMovies = (title, year, lowRate, highRate) => {
-    let yearS = year == null ? [] : year.split('')
     return dataMovies
       .filter((el) => el.title.toLowerCase().includes(title.toLowerCase()))
-      .filter((el) => {
-        if (yearS.length === 0) return {}; else {
-          let elYear = el.year.toString().split('')
-          return elYear[0] === yearS[0] && elYear[1] === yearS[1] && elYear[2] === yearS[2] && elYear[3] === yearS[3]
-        }
-      })
+      .filter((el) => { return !Boolean(year)? true: parseInt(year) === parseInt(el.year) })
       .filter((el) => (el.ranking >= lowRate))
       .filter((el) => (el.ranking <= highRate))
   }
