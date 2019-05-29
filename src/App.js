@@ -10,22 +10,31 @@ import MovieCard from './MovieCard'
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { movies: dataMovies, filtredMovies: dataMovies }
+    this.state = { movies: dataMovies }
     library.add(fab)
   }
   getstatefromsearch = (title, year, lowRate, highRate) => {
-    this.setState({ filtredMovies: this.filter(title, year, lowRate, highRate) })
+    this.setState({ movies: this.filterMovies(title, year, lowRate, highRate) })
   }
   getnewmovie = (title, year, ranking, description, image) => {
     let movies = this.state.movies
     movies.push({ title, year, image, ranking, description })
-    this.setState({ movies})
+    this.setState({ movies })
+    dataMovies.push({ title, year, image, ranking, description })
   }
-  filter = (title, year, lowRate, highRate) => this.state.movies
-    .filter((el) => el.title.toLowerCase().includes(title.toLowerCase()) )
-    .filter((el) => { if (year == null) return {}; else return parseInt(el.year) === parseInt(year) })
-    .filter((el) => (el.ranking >= lowRate))
-    .filter((el) => (el.ranking <= highRate))
+  filterMovies = (title, year, lowRate, highRate) => {
+    let yearS = year == null ? [] : year.split('')
+    return dataMovies
+      .filter((el) => el.title.toLowerCase().includes(title.toLowerCase()))
+      .filter((el) => {
+        if (yearS.length === 0) return {}; else {
+          let elYear = el.year.toString().split('')
+          return elYear[0] === yearS[0] && elYear[1] === yearS[1] && elYear[2] === yearS[2] && elYear[3] === yearS[3]
+        }
+      })
+      .filter((el) => (el.ranking >= lowRate))
+      .filter((el) => (el.ranking <= highRate))
+  }
 
   render() {
     return (
@@ -33,7 +42,7 @@ export default class App extends React.Component {
         <div className="container">
           <Inputs getstatefromsearch={this.getstatefromsearch} />
           <div className="parent-movies">
-            {this.state.filtredMovies.map((el, index) => <MovieCard item={el} key={index} />)}
+            {this.state.movies.map((el, index) => <MovieCard item={el} key={index} />)}
             <AddVideo getnewmovie={this.getnewmovie} />
           </div>
         </div>
