@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import Inputs from './Inputs'
+import Search from './Search'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import AddVideo from './AddVideo'
+import AddMovie from './AddMovie'
 import dataMovies from './dataMovies'
 import MovieCard from './MovieCard'
 
@@ -13,13 +13,16 @@ export default class App extends React.Component {
     this.state = { movies: dataMovies }
     library.add(fab)
   }
+  //get the values filled in the inputs for filter
   getstatefromsearch = (title, year, lowRate, highRate) => {
      this.setState({movies: this.filterMovies(title, year, lowRate, highRate)})
   }
+  //get the new movie to add
   getnewmovie = (title, year, ranking, description, image) => {
     dataMovies.push({ title, year, image, ranking, description })
     this.setState({ movies: dataMovies })
   }
+  //filter the list of movies by title, year, lowRate, highRate
   filterMovies = (title, year, lowRate, highRate) => {
     return dataMovies
       .filter((el) => el.title.toLowerCase().includes(title.toLowerCase()))
@@ -32,10 +35,10 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <div className="container">
-          <Inputs getstatefromsearch={this.getstatefromsearch} />
+          <Search getstatefromsearch={this.getstatefromsearch} />
           <div className="parent-movies">
             {this.state.movies.map((el, index) => <MovieCard item={el} key={index} />)}
-            <AddVideo getnewmovie={this.getnewmovie} />
+            <AddMovie getnewmovie={this.getnewmovie} />
           </div>
         </div>
       </div>

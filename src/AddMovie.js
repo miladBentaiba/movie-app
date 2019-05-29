@@ -8,17 +8,20 @@ export default class AddVideo extends Component {
     super(props);
     this.state = { modal: false, title: '', year: 2000, description: '', rating: 1, image: '', invalidFile: false };
   }
+  //send the added movie to the parent
   sendMovies = () => {
     if (this.state.modal === false)
       this.props.getnewmovie(
         this.state.title, this.state.year, this.state.rating, this.state.description, this.state.image
       )
   }
+  //update the state to match the value of the introduced rating
   onStarClick(nextValue, prevValue, name) { this.setState({ rating: nextValue }); }
   toggle = () => {
     this.setState(prevState => ({ modal: !prevState.modal }), () => this.sendMovies()
     )
   }
+  //update the state to match the values of the filter inputs
   updateForm = (e) => {
     e.target.name === 'title' ? this.setState({ title: e.target.value }) :
     e.target.name === 'year' ? this.setState({ year: e.target.value }) :

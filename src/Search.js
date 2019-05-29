@@ -8,17 +8,22 @@ export default class Inputs extends React.Component {
     super(props);
     this.state = { collapse: false, up: true, ratingLow: 0, ratingHigh: 10, title: "", year: null };
   }
+  //update the state to match the values of the filter inputs
   filter = (e) => {
     e.target.name === 'title' ? this.setState({ title: e.target.value }, () => this.sendNewMovie()) :
       this.setState({ year: e.target.value }, () => this.sendNewMovie())
   }
+  // send the added movie to the parent
   sendNewMovie = () => {
     this.props.getstatefromsearch(this.state.title, this.state.year, this.state.ratingLow, this.state.ratingHigh)
   }
+  // update the state to match the value of the introduced ratings 
+  // we have two values : low rate (rate1) and high rate (rate2)
   onStarClick(nextValue, prevValue, name) {
     if (name === "rate1") this.setState({ ratingLow: nextValue }, () => this.sendNewMovie());
     else this.setState({ ratingHigh: nextValue }, () => this.sendNewMovie());
   }
+  // show or hide the modal
   toggle = () => { this.setState(state => ({ collapse: !state.collapse, up: !state.up }), () => this.sendNewMovie()); }
 
   render() {
