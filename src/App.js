@@ -22,7 +22,7 @@ export default class App extends React.Component {
     this.setState({ movies})
   }
   filter = (title, year, lowRate, highRate) => this.state.movies
-    .filter((el) => el.title.includes(title))
+    .filter((el) => el.title.toLowerCase().includes(title.toLowerCase()) )
     .filter((el) => { if (year == null) return {}; else return parseInt(el.year) === parseInt(year) })
     .filter((el) => (el.ranking >= lowRate))
     .filter((el) => (el.ranking <= highRate))
