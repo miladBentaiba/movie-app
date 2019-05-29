@@ -15,7 +15,7 @@ export default class App extends React.Component {
   }
   //get the values filled in the inputs for filter
   getstatefromsearch = (title, year, lowRate, highRate) => {
-     this.setState({movies: this.filterMovies(title, year, lowRate, highRate)})
+    this.setState({ movies: this.filterMovies(title, year, lowRate, highRate) })
   }
   //get the new movie to add
   getnewmovie = (title, year, ranking, description, image) => {
@@ -26,7 +26,7 @@ export default class App extends React.Component {
   filterMovies = (title, year, lowRate, highRate) => {
     return dataMovies
       .filter((el) => el.title.toLowerCase().includes(title.toLowerCase()))
-      .filter((el) => { return !Boolean(year)? true: parseInt(year) === parseInt(el.year) })
+      .filter((el) => { return !Boolean(year) ? true : parseInt(year) === parseInt(el.year) })
       .filter((el) => (el.ranking >= lowRate))
       .filter((el) => (el.ranking <= highRate))
   }
